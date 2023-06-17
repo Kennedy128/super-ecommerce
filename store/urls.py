@@ -5,6 +5,11 @@ from . import views
 
 urlpatterns = [
     path('',views.home , name = "home"),
+    path('createprofile',views.create_profile,name="create_profile"),
+    path('profile/<int:id>',views.profile, name = "profile"),
+    path('accounts/profile',views.profile,name='profile'),
+    path('profile/edit', views.edit_profile,name = 'edit_profile')
+    
 
 ]
 

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+{{block.super}}
+
+<h1 class="text-center">YOUR PROFILE</h1>
+<div class="container">
+      <div class="row">
+        {%for profile in profile%}
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="{{profile.profile_pic.url}}" alt="Card image cap" style="width:100%;max-width:350px;padding-top:10px;height: 250px;">
+          </div>
+        </div>
+        <div class="col-md-8">   
+            <div class="card-">
+              <h2 class="card-title">{{profile.user.username}}</h2>
+              <h4 class="card-text">{{profile.bio}}</h4>
+              <h4 class="card-text">{{profile.contacts}}</h4>
+            </div>
+         </div> 
+        {%endfor%}
+        <button class = "btn btn-light btn-lg"><a style="color: black;"href="{% url 'edit_profile' %}">Edit Profile</a></button>
+      </div>
+        <br>
+      <h2 class="text-center">YOUR PROJECTS</h2>
+      <div class="row">
+        {% if projects %}
+        {%for project in projects %}
+          <div class="col-md-4">
+            <img class="card-img-top" src="{{project.image.url}}" style="width:100%;max-width:350px;padding-top:10px;height: 250px;" >
+            <div class="card-body">
+              <h5 class="card-title">Title: {{project.title}}</h5>
+              <p class="card-text">Description: {{project.description}}</p>
+              <p class="card-text"><a href="{{project.link}}">view live site</a></p>
+            </div>
+          </div>
+        {%endfor%}
+        {% else %}
+        <h1>You have no posts</h1>
+        {% endif %}
+    
+      </div>
+</div>          
+{% endblock %}
