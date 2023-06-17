@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap4%}
+{%block content%}
+
+{{block.super}}
+
+<div class="container">
+  <div class="row">
+    <br>
+    <br>
+    <h1 class="text-center">POST YOUR PRODUCT</h1>
+    <div class="col-md-12 mt-4 mx-auto">
+<div class="card">
+<form  action="{%url 'new_post'%}" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    {% bootstrap_form form %}
+    <input type="submit" class="btn btn-primary btn-lg" value="Post Project">
+  </form>
+  </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

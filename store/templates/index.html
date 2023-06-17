@@ -6,12 +6,29 @@
 <div class="container">
   <br>
   <br>
-  <h1 class="text-center"><u>super store</u></h1>
-  <blockquote class="text-center"><cite class="text-center">Get what you want at a convinient price</cite></blockquote>
+  <h1 class="text-center"><u>SUPER STORE</u></h1>
+  <blockquote class="text-center"><cite class="text-center">Get what you at an affordable price</cite></blockquote>
   
   <br />
   <div class="row">
-
+  {%if posts%}
+  {% for post in posts %}
+  
+    <div class="col-md-4">
+     <div class="card">
+       <div class="card-title">
+         <h4 class="text-center">{{post.title}}</h4>
+       </div>
+      <img src="{{post.image.url}}" class="card-img-top"  style="width:100%;max-width:600px;padding-top:10px;height: 300px;">
+      
+      </div>
+      <br>
+    </div>
+    
+  {% endfor%}   
+  {% else%} 
+  <h1>There are no products available</h1>
+  {% endif %}
    </div> 
 </div>
 

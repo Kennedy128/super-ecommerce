@@ -44,6 +44,9 @@ class Project(models.Model):
     title=models.CharField(max_length = 100)
     description=models.CharField(max_length = 100)
     profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
+    
+
+    
 
     def save_project(self):
         '''
@@ -70,3 +73,13 @@ class Project(models.Model):
         '''  
         projects = cls.objects.filter(title__icontains=search_term)
         return projects 
+    
+class Review(models.Model):
+    '''
+    review class to define review objects
+    '''
+    user_id = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    project_id=models.ForeignKey(Project,on_delete=models.CASCADE,null=True)
+    comment=models.TextField(blank=True)
+    availability=models.PositiveIntegerField()
+    ratings=models.PositiveIntegerField(null=True)   
