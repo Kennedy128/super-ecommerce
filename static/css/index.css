@@ -19,11 +19,11 @@ body{
 }
 
 body{
-    /* background: url("/media/images/background.jpeg");
+     background: url("/media/images/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; */
-    background-color: #E7D8C9;
+    background-position: center; }
+    /*background-color: #E7D8C9;
     
     font-family: 'Reem Kufi', sans-serif;
     color: black;
