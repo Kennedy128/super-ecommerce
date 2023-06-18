@@ -14,6 +14,8 @@ urlpatterns = [
     path('search/',views.search_results, name='search_results'),
     path('edit_product/<int:id>', views.edit_project,name = 'edit_project'),
     path('delete_product/<int:id>', views.delete_project,name = 'delete_project'),
+    path('api/profiles/',views.ProfileList.as_view()),
+    path('api/projects/',views.ProjectList.as_view()),
     
     
 

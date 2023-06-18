@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'bootstrap4',
     'cloudinary',
+     'rest_framework',
 ]
 
 MIDDLEWARE = [
