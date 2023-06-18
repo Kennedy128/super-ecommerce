@@ -10,6 +10,7 @@ urlpatterns = [
     path('accounts/profile',views.profile,name='profile'),
     path('profile/edit', views.edit_profile,name = 'edit_profile'),
     path('new/post',views.new_post,name="new_post"),
+    path('project/<int:id>',views.single_post,name='project')
     
 
 ]

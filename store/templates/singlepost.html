@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{%block content%}
+
+{{block.super}}
+
+<div class="container">
+  <br>
+  <br>
+  <h1 class="text-center">{{project.title}}</h1>
+  <div class="row">
+    <br>
+    <div class="col-md-6">
+      <div class="card " >
+          <img class="card-img-top" src="{{project.image.url}}" alt="Card image cap" style="width:100%;max-width:570px;padding-top:10px;height: 300px;">
+          <div class="card-body">
+            
+            <h3 class="card-text">{{project.description}}</h3>
+            <h3 class="card-text">Posted by: {{project.profile.user.username}}</h3>
+            
+          </div>  
+      </div> 
+    </div> 
+    <div class="col-md-6">
+      <div class="card">
+      <h3>Buy at an affordable price</h3>
+      <form  action="{%url 'project'  project.id%}" method="POST" id="reviewform">
+      {%csrf_token%}
+
+      {% bootstrap_form form %}
+      <input type="submit" class="btn btn-primary btn-lg" value="Post">
+      </form>
+      </div>
+    </div> 
+  </div>       
+        <br />
+        <br />
+  <div class="row">
+  {%for review in reviews%}
+  <div class="col-md-6">
+    <div class="card ">
+      <div class="card-body">
+        <h4 class="card-text">availability:{{review.availability}}  ratings:{{review.ratings}} </h4>
+        <p class="card-text">{{review.comment}}</p>
+        <p class="card-text">Posted by:{{review.user_id.username}}</p>
+      </div>  
+    </div>
+
+    </div>
+  {%endfor%}  
+  </div>
+</div> 
+{% endblock %}
+{% block scripts %} 
+  {{block.super}}
+  
+  
+{% endblock %}

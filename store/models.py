@@ -35,6 +35,17 @@ class Profile(models.Model):
         return name
     
 
+class Review(models.Model):
+    '''
+    review class to define review objects
+    '''
+    user_id = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    project_id=models.ForeignKey("store.Project",on_delete=models.CASCADE,null=True)
+    comment=models.TextField(blank=True)
+    availability=models.PositiveIntegerField()
+    ratings=models.PositiveIntegerField(null=True)
+    
+
 class Project(models.Model):
     '''
     project class to define project objects
@@ -45,9 +56,6 @@ class Project(models.Model):
     description=models.CharField(max_length = 100)
     profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
     
-
-    
-
     def save_project(self):
         '''
         method to save object to database
@@ -72,14 +80,6 @@ class Project(models.Model):
         method that retrieves a project by use of its title
         '''  
         projects = cls.objects.filter(title__icontains=search_term)
-        return projects 
-    
-class Review(models.Model):
-    '''
-    review class to define review objects
-    '''
-    user_id = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
-    project_id=models.ForeignKey(Project,on_delete=models.CASCADE,null=True)
-    comment=models.TextField(blank=True)
-    availability=models.PositiveIntegerField()
-    ratings=models.PositiveIntegerField(null=True)   
+        return projects
+     
+

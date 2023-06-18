@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Project
+from .models import Profile,Project,Review
 from django.contrib.auth.models import User
-from .forms import ProfileForm,ProjectForm
+from .forms import ProfileForm,ProjectForm,ReviewForm
 
 # Create your views here.
 def home(request):
@@ -71,6 +71,26 @@ def new_post(request):
         form = ProjectForm()
     return render(request, 'newpost.html',{"form":form})
 
+@login_required(login_url='/accounts/login/')  
+def single_post(request, id):
+    current_user = request.user
+    project = Project.objects.get(pk=id)
+    reviews = Review.objects.filter(project_id=id).all()
+    print(len(reviews))
+    current_user = request.user
+    project = Project.get_project_by_id(id)
+    if request.method=='POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user_id = current_user
+            review.project_id = project
+            review.save()
+    else:
+        form=ReviewForm()
+    return render(request,'singlepost.html',{"reviews":reviews,"form":form,"project":project})
+    
+   
 
 
 

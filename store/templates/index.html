@@ -16,11 +16,13 @@
   
     <div class="col-md-4">
      <div class="card">
+      
+        
        <div class="card-title">
          <h4 class="text-center">{{post.title}}</h4>
        </div>
       <img src="{{post.image.url}}" class="card-img-top"  style="width:100%;max-width:600px;padding-top:10px;height: 300px;">
-      
+      <a href="{% url 'project' post.id%}"><button class="btn-xs btn-primary">More</button> </a>
       </div>
       <br>
     </div>
