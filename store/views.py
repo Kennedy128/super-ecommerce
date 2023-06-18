@@ -118,6 +118,20 @@ def edit_project(request, id):
     }
     return render(request, 'edit_project.html',context)
 
+@login_required(login_url='/accounts/login/')  
+def delete_project(request, id):
+    current_user = request.user
+    project = Project.objects.get(id=id)
+
+    if request.method == 'POST':
+        project.delete()
+        return redirect(home)
+
+    context = {
+        'project': project,
+    }
+    return render(request, 'delete_project.html', context)
+
 
 
 

@@ -13,6 +13,7 @@ urlpatterns = [
     path('project/<int:id>',views.single_post,name='project'),
     path('search/',views.search_results, name='search_results'),
     path('edit_product/<int:id>', views.edit_project,name = 'edit_project'),
+    path('delete_product/<int:id>', views.delete_project,name = 'delete_project'),
     
     
 
