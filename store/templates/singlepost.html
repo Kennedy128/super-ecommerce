@@ -18,6 +18,8 @@
             
             <h3 class="card-text">{{project.description}}</h3>
             <h3 class="card-text">Posted by: {{project.profile.user.username}}</h3>
+            <button class = "btn btn-light btn-lg"><a style="color: black;"href="{% url 'edit_project' project.id%}">Edit Project</a></button>
+      </div>
             
           </div>  
       </div> 

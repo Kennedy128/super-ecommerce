@@ -23,6 +23,7 @@
        </div>
       <img src="{{post.image.url}}" class="card-img-top"  style="width:100%;max-width:600px;padding-top:10px;height: 300px;">
       <a href="{% url 'project' post.id%}"><button class="btn-xs btn-primary">More</button> </a>
+      <button class = "btn btn-light btn-lg"><a style="color: black;"href="{% url 'edit_project' post.id%}">Edit Product</a></button>
       </div>
       <br>
     </div>

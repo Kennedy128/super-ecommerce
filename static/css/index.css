@@ -19,7 +19,7 @@ body{
 }
 
 body{
-     background: url("/media/images/background.jpg");
+    background: url("/media/images/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; }

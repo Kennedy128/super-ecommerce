@@ -99,7 +99,39 @@ def search_results(request):
         return render(request, 'search.html',{"message":message,"projects": searched_projects})
     else:
         message = "You haven't searched for any term"
-        return render(request, 'search.html',{"message":message})     
+        return render(request, 'search.html',{"message":message}) 
+    
+
+@login_required(login_url='/accounts/login/')  
+def edit_project(request, id):
+    current_user = request.user
+    project = Project.objects.get(id=id)
+    form=ProjectForm(instance=project)
+    if request.method=='POST':
+        form = ProjectForm(request.POST,request.FILES, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect(home)
+    context = {
+        'project': project,
+        'form': form,
+    }
+    return render(request, 'edit_project.html',context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
 
     
    

@@ -11,7 +11,9 @@ urlpatterns = [
     path('profile/edit', views.edit_profile,name = 'edit_profile'),
     path('new/post',views.new_post,name="new_post"),
     path('project/<int:id>',views.single_post,name='project'),
-    path('search/',views.search_results, name='search_results')
+    path('search/',views.search_results, name='search_results'),
+    path('edit_product/<int:id>', views.edit_project,name = 'edit_project'),
+    
     
 
 ]
